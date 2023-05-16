@@ -117,9 +117,11 @@ def timed():
             p_v.append(p)
             Thread(target=t, args=[p]).start()
 
-
-if __name__ == "__main__":
+def main1():
     for p in p_v:
         Thread(target=t, args=[p]).start()
     Thread(target=keepChecking).start()
     Thread(target=timed).start()
+
+if __name__ == "__main__":
+    main1()

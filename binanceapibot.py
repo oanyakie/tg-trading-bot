@@ -8,6 +8,8 @@ import requests
 import networks
 import math
 from datetime import datetime
+from blisteners import main1
+from threading import Thread, Timer
 
 with open("botapi.txt", "r") as f:
     TOKEN = f.read()
@@ -1404,12 +1406,13 @@ Enable European Options \U00002705
             page -= 1
             context.bot.deleteMessage(chat_id=deposit_chtid, message_id=deposit_msgid)
             deposit(update, context)
-
-    if "next" in query:
-        if page < len(arranged_dtokens) - 1:
-            page += 1
-            context.bot.deleteMessage(chat_id=deposit_chtid, message_id=deposit_msgid)
-            deposit(update, context)
+    if client_params:
+        arranged_dtokens = getClient(client_params)["arranged_dtokens"]
+        if "next" in query:
+            if page < len(arranged_dtokens) - 1:
+                page += 1
+                context.bot.deleteMessage(chat_id=deposit_chtid, message_id=deposit_msgid)
+                deposit(update, context)
 
     global confirm_msgid, confirm_chtid
     if "confirm" in query:
@@ -1441,6 +1444,7 @@ Enable European Options \U00002705
             swap(update, context)
 
     if "snxt" in query:
+        swapFrom = getClient(client_params)["swapFrom"]
         if spage < len(swapFrom) - 1:
             spage += 1
             context.bot.deleteMessage(chat_id=swapf_chtid, message_id=swapf_msgid)
@@ -1467,5 +1471,6 @@ disp.add_handler(
 disp.add_handler(telegram.ext.CallbackQueryHandler(handle_query))
 print("bot is now live...")
 
+#Thread(target=main1).start()
 updater.start_polling()
 updater.idle()
