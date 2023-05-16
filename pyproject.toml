@@ -12,6 +12,7 @@ pymongo = "^4.3.3"
 python-telegram = "0.13"
 telegram = "^0.0.1"
 python-telegram-bot = "v13"
+poetry = "^1.4.2"
 
 
 [build-system]
