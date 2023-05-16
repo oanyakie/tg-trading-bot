@@ -4,4 +4,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "binanceapibot.py"]
+CMD ["parallel", "python", ":::", "binanceapibot.py", ":::", "blisteners.py"]
