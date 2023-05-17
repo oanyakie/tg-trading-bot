@@ -1288,7 +1288,7 @@ def handle_query(update, context):
         put1 = status["permitsUniversalTransfer"]
         evo1 = status["enableVanillaOptions"]
         context.bot.send_message(
-            chat_id=update.effective_chat.id, text=f"Api Permissions:\nIP Restricted: {ip1}\nReading Enabled: {er1}\n Spot/Marging Trading Enabled: {esm1}\n Withdrawals Enabled: {ew1}\n Internal Transfer Enabled: {eit1}\n Futures Enabled: {ef1}\n Margin Enabled: {em1}\n Permits Universal Transfer: {put1}\n Vanilla Options Enabled: {evo1}"
+            chat_id=update.effective_chat.id, text=f"Api Permissions:\nIP Restricted: {ip1}\nReading Enabled: {er1}\nSpot/Marging Trading Enabled: {esm1}\nWithdrawals Enabled: {ew1}\nInternal Transfer Enabled: {eit1}\nFutures Enabled: {ef1}\nMargin Enabled: {em1}\nPermits Universal Transfer: {put1}\nVanilla Options Enabled: {evo1}"
         )
     if "swap" in query:
         swap(update, context)
