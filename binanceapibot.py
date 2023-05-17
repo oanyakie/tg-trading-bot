@@ -271,12 +271,12 @@ def acc_menu_buttons():
         InlineKeyboardButton(text="Deposit History", callback_data="depHistory"),
         InlineKeyboardButton("Withdrawal History", callback_data="withHistory"),
     ]
-    buttons3 = [
+    buttons5 = [
         InlineKeyboardButton(
             text="Api Permissions", callback_data="apiPermissions"
         )
     ]
-    return InlineKeyboardMarkup([buttons, buttons2, buttons3, buttons4])
+    return InlineKeyboardMarkup([buttons, buttons2, buttons3, buttons4, buttons5])
 
 
 def deposit_buttons(_tokens):
