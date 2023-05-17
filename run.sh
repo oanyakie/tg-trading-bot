@@ -2,4 +2,4 @@
 
 python blisteners.py &
 python binanceapibot.py &
-pyhton test.py
+python test.py
