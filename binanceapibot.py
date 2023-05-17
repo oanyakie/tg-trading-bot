@@ -271,6 +271,11 @@ def acc_menu_buttons():
         InlineKeyboardButton(text="Deposit History", callback_data="depHistory"),
         InlineKeyboardButton("Withdrawal History", callback_data="withHistory"),
     ]
+    buttons3 = [
+        InlineKeyboardButton(
+            text="Api Permissions", callback_data="apiPermissions"
+        )
+    ]
     return InlineKeyboardMarkup([buttons, buttons2, buttons3, buttons4])
 
 
@@ -1270,7 +1275,21 @@ def handle_query(update, context):
         context.bot.send_message(
             chat_id=update.effective_chat.id, text="Enjoy your free time while it lasts"
         )
-
+    if "apiPermissions" in query:
+        client = getClient(client_params)["client"]
+        status = client.get_account_api_permissions()
+        ip1= status["ipRestrict"]
+        er1 = status["enableReading"]
+        esm1 = status["enableSpotAndMarginTrading"]
+        ew1 = status["enableWithdrawals"]
+        eit1 = status["enableInternalTransfer"]
+        em1 = status["enableMargin"]
+        ef1 = status["enableFutures"]
+        put1 = status["permitsUniversalTransfer"]
+        evo1 = status["enableVanillaOptions"]
+        context.bot.send_message(
+            chat_id=update.effective_chat.id, text=f"Api Permissions:\nIP Restricted: {ip1}\nReading Enabled: {er1}\n Spot/Marging Trading Enabled: {esm1}\n Withdrawals Enabled: {ew1}\n Internal Transfer Enabled: {eit1}\n Futures Enabled: {ef1}\n Margin Enabled: {em1}\n Permits Universal Transfer: {put1}\n Vanilla Options Enabled: {evo1}"
+        )
     if "swap" in query:
         swap(update, context)
 
