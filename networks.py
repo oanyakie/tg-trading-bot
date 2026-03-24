@@ -1,3 +1,4 @@
+#Enter address & tag for withdrawals.
 network = [
     {
         "network_name": "BTC",
